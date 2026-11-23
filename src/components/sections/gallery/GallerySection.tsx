@@ -46,7 +46,7 @@ export function GallerySection() {
     <section
       id="gallery"
       aria-labelledby="gallery-title"
-      className="relative overflow-hidden border-b border-line py-14 lg:py-20"
+      className="relative overflow-hidden border-b border-line py-10 lg:py-14"
     >
       <Container className="relative z-10">
         <div className="relative w-full py-4">

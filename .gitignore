@@ -8,3 +8,7 @@ studio/dist
 studio/.sanity
 studio/.env
 asset/SERTIFIKAT/Asah led by Dicoding/
+*.md
+!README.md
+.agents/
+.agent/

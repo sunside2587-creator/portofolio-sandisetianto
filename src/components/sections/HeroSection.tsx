@@ -25,7 +25,7 @@ export function HeroSection() {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="bg-y2k-grid relative overflow-hidden border-b border-line pt-8 pb-10 sm:pt-12 lg:pt-16 lg:pb-14"
+      className="bg-y2k-grid relative overflow-hidden border-b border-line pt-5 pb-7 sm:pt-8 lg:pt-10 lg:pb-10"
     >
       <CrosshairGrid />
       <span
@@ -104,7 +104,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
           <ArrowLink label="SCROLL TO EXPLORE" href="#about" tone="ink" />
           <span className="text-[11px] font-medium tracking-[0.18em] text-muted uppercase">
             {PROFILE.name}

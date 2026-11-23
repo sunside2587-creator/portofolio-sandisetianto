@@ -20,7 +20,7 @@ export function SelectedWorkSection() {
   const visibleProjects = showAll ? state.data : featured;
 
   return (
-    <section id="work" aria-labelledby="work-title" className="border-b border-line py-16 lg:py-24">
+    <section id="work" aria-labelledby="work-title" className="border-b border-line py-10 lg:py-14">
       <Container>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="flex flex-col justify-between lg:col-span-3">

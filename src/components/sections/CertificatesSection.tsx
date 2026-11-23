@@ -48,7 +48,7 @@ export function CertificatesSection() {
     <section
       id="certificates"
       aria-labelledby="certificates-title"
-      className="border-b border-line py-16 lg:py-24"
+      className="border-b border-line py-10 lg:py-14"
     >
       <Container>
         <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-12">
