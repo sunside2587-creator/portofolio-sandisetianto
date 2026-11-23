@@ -1,0 +1,182 @@
+{
+  "dicoding-backend-js": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-react-fundamental": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-frontend-pemula": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-web-dasar": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-ai-dasar": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-git-github": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-memulai-pemrograman": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-logika-pemrograman": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-spec-driven-kiro": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-react-app": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "dicoding-javascript-dasar": {
+    "thumb": {
+      "w": 480,
+      "h": 340
+    },
+    "full": {
+      "w": 1600,
+      "h": 1132
+    }
+  },
+  "sic7-python": {
+    "thumb": {
+      "w": 480,
+      "h": 338
+    },
+    "full": {
+      "w": 998,
+      "h": 703
+    }
+  },
+  "sic7-iot": {
+    "thumb": {
+      "w": 480,
+      "h": 341
+    },
+    "full": {
+      "w": 991,
+      "h": 705
+    }
+  },
+  "cloudcamp-pekanbaru-2026": {
+    "thumb": {
+      "w": 480,
+      "h": 341
+    },
+    "full": {
+      "w": 993,
+      "h": 705
+    }
+  },
+  "panitia-asomatif-2025": {
+    "thumb": {
+      "w": 480,
+      "h": 337
+    },
+    "full": {
+      "w": 1115,
+      "h": 783
+    }
+  },
+  "iot-simulation-terbaik": {
+    "thumb": {
+      "w": 480,
+      "h": 367
+    },
+    "full": {
+      "w": 1080,
+      "h": 826
+    }
+  },
+  "juara-2-fotografi": {
+    "thumb": {
+      "w": 480,
+      "h": 361
+    },
+    "full": {
+      "w": 1080,
+      "h": 812
+    }
+  },
+  "mfd-terbaik-3": {
+    "thumb": {
+      "w": 480,
+      "h": 264
+    },
+    "full": {
+      "w": 1087,
+      "h": 598
+    }
+  }
+}

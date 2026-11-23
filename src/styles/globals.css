@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --color-paper: #F4ECE3;
+  --color-ink: #0E0E0E;
+  --color-signal: #C21415;
+  --color-muted: #5F5A55;
+  --color-line: rgb(14 14 14 / 0.15);
+
+  --font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-spin-reverse: spin-reverse 26s linear infinite;
+  --animate-float-y2k: float-y2k 4s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes float-y2k {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.bg-y2k-grid {
+  background-image: radial-gradient(rgb(14 14 14 / 0.16) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-y2k-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgb(14 14 14 / 0.03) 3px,
+    rgb(14 14 14 / 0.03) 4px
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--color-signal);
+  color: var(--color-paper);
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+studio/node_modules
+studio/dist
+studio/.sanity
+studio/.env
+asset/SERTIFIKAT/Asah led by Dicoding/
