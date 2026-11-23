@@ -34,14 +34,6 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     SCRATCH_DIR.mkdir(parents=True, exist_ok=True)
 
-    # DSC07495 (1).JPG — center slightly right of center (subject around 52% X)
-    hero_src = ImageOps.exif_transpose(Image.open(ASSET_DIR / "DSC07495 (1).JPG")).convert("RGB")
-    hero_crop = crop_4_5(hero_src, center_x_ratio=0.525)
-    save_responsive_webp(hero_crop, "hero", [480, 720, 900])
-    hero_crop.resize((480, 600), Image.Resampling.LANCZOS).save(
-        SCRATCH_DIR / "preview-hero.jpg", format="JPEG", quality=85
-    )
-
     # DSC07498 (1).JPG — subject profile around 56% X
     about_src = ImageOps.exif_transpose(Image.open(ASSET_DIR / "DSC07498 (1).JPG")).convert("RGB")
     about_crop = crop_4_5(about_src, center_x_ratio=0.56)
@@ -49,14 +41,6 @@ def main() -> None:
     about_crop.resize((480, 600), Image.Resampling.LANCZOS).save(
         SCRATCH_DIR / "preview-about.jpg", format="JPEG", quality=85
     )
-
-    # foto_Sandi_RBG.png — preserve alpha, max width 400
-    cutout_src = ImageOps.exif_transpose(Image.open(ASSET_DIR / "foto_Sandi_RBG.png")).convert("RGBA")
-    cw, ch = cutout_src.size
-    target_cw = min(400, cw)
-    target_ch = int(round(ch * (target_cw / cw)))
-    cutout_resized = cutout_src.resize((target_cw, target_ch), Image.Resampling.LANCZOS)
-    cutout_resized.save(OUT_DIR / "cutout-400.webp", format="WEBP", quality=82, method=6)
 
     # anime_Y2K-removebg-preview.png — trim top transparent padding and preserve alpha
     anime_path = ASSET_DIR / "anime_Y2K-removebg-preview.png"

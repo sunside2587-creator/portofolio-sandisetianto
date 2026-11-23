@@ -1,77 +1,129 @@
-# Portofolio Sandi Setianto
+# Sandi Setianto — Personal Portfolio
 
-Website portofolio single-page bergaya **Editorial Brutalist × Y2K Accents**, dibangun dengan **React 19, TypeScript (strict), Tailwind CSS v4, GSAP + ScrollTrigger, Lenis, dan Motion**.
+Website portofolio interaktif bergaya **Editorial Brutalist × Y2K Accents** milik **Sandi Setianto** (*Fullstack Developer* — Mahasiswa Teknik Informatika UIN Sultan Syarif Kasim Riau, Pekanbaru).
 
-## Menjalankan Proyek
+- **Live Demo:** [portofolio-sandisetianto-3yb5.vercel.app](https://portofolio-sandisetianto-3yb5.vercel.app)
+
+---
+
+## Fitur Utama
+
+- **Editorial Brutalist × Y2K Aesthetic:** Palet kontras tinggi (`#F4ECE3` Warm Paper, `#0E0E0E` Ink Black, `#C21415` Crimson Signal) dengan tipografi display `Anton`, body `Inter`, dan metadata `JetBrains Mono`.
+- **3D S-Wave Warped Wordmark:** Animasi tipografi gelombang 3D per karakter 60fps berbasis `motion/react` (`useAnimationFrame`).
+- **Interactive Tech Stack Deck:** Kartu tumpukan teknologi interaktif dengan *fan deck* di desktop dan *dial carousel* di perangkat mobile.
+- **Hybrid Selected Work (Sanity CMS + Pinned Fallback):** Mengambil proyek secara dinamis dari Sanity Headless CMS melalui Anti-Corruption Layer (validasi DTO ketat tanpa `any`) dan menggabungkannya dengan proyek unggulan lokal.
+- **Sertifikat & Pencapaian Interaktif:** Katalog 19 sertifikat & penghargaan dengan *Highlights Strip* (Top 3 penghargaan), filter kategori, *spring cursor preview* di desktop, dan modal pratinjau penuh + tautan verifikasi kredensial asli.
+- **Smooth Scroll & Motion Accessibility:** Integrasi `Lenis` + `GSAP ScrollTrigger` yang otomatis menonaktifkan animasi berat ketika pengguna mengaktifkan `prefers-reduced-motion: reduce`.
+
+---
+
+## Proyek Unggulan (Selected Work)
+
+1. **Muroja'ah Juz 30 — TIF UIN Suska Riau** (`Mobile App`)
+   - Aplikasi mobile setoran dan pemantauan progres hafalan Juz 30 mahasiswa Teknik Informatika UIN Suska Riau untuk syarat Kerja Praktek & Seminar.
+   - **Stack:** Flutter, Dart, Android, REST API
+   - **Google Play Store:** [uinsuska.tif.dashboard.student](https://play.google.com/store/apps/details?id=uinsuska.tif.dashboard.student)
+
+2. **Azrya Batik — AI POS, HPP & Analytics** (`Fullstack & AI`)
+   - Sistem kasir, kalkulator HPP, OCR nota belanja, asisten finansial RAG (*Tanya Data Azrya*), dan analitik prediksi penjualan untuk UMKM Azrya Batik.
+   - **Front-End:** React.js (Vite), Tailwind CSS, Axios
+   - **Back-End:** Node.js, Express REST API (`/api/v1/`), Joi, PostgreSQL
+   - **AI Service:** Python, FastAPI, Vision AI / OCR, Gemini API + LangChain, ChromaDB
+   - **Data Science:** Python, Pandas, Scikit-learn, Prophet, Streamlit
+
+3. **Personal Portfolio** (`Web App`)
+   - Portofolio single-page dengan arsitektur modular TypeScript ketat, animasi GSAP/Motion, dan integrasi Sanity CMS.
+   - **Stack:** React 19, TypeScript, Tailwind CSS v4, GSAP, Lenis, Motion
+
+---
+
+## Tech Stack
+
+| Kategori | Teknologi |
+|---|---|
+| **Core Framework** | React 19, Vite 8, TypeScript 5.8 (`strict`) |
+| **Styling & Typography** | Tailwind CSS v4, `@fontsource` (Anton, Inter, JetBrains Mono) |
+| **Animation & Scroll** | GSAP 3 + ScrollTrigger, Lenis Smooth Scroll, Motion (`motion/react`) |
+| **Headless CMS** | Sanity Studio v3 + Sanity HTTP GROQ API |
+| **Testing & Quality** | Vitest, ESLint 9 Flat Config (`--max-warnings 0`), TypeScript Strict Mode |
+| **Asset Pipeline** | Python (`Pillow`, `PyMuPDF`) untuk konversi otomatis WebP responsif |
+
+---
+
+## Struktur Direktori
+
+```text
+├── asset/                  # Aset sumber mentah (foto, screenshot proyek, PDF/JPG sertifikat)
+├── public/                 # Aset publik statis (favicon, robots.txt, og-image.png, PDF sertifikat)
+├── scripts/                # Pipeline Python optimasi foto & sertifikat + runner Sanity Studio
+├── src/
+│   ├── app/                # Root App & AppProviders (SmoothScrollProvider)
+│   ├── assets/             # Hasil optimasi WebP & manifest.json sertifikat
+│   ├── components/
+│   │   ├── layout/         # Header, MobileNav, Footer, Container, SkipLink
+│   │   ├── sections/       # Hero, About, Gallery, SelectedWork, Services, Certificates, ContactCta
+│   │   └── ui/             # Primitif UI (Button, Dialog, WarpedWordmark, FilterTabs, Marquee, dll.)
+│   ├── content/            # Data statis terketik (profile, certificates, gallery, services, navigation)
+│   ├── features/
+│   │   ├── certificates/   # Selector, hook filter, cursor preview, komponen daftar & dialog sertifikat
+│   │   └── projects/       # Mapper DTO Sanity, fallback data, service fetch, hook useProjects, ProjectCard
+│   ├── hooks/              # Custom hooks (useMediaQuery, usePrefersReducedMotion, useGsapContext, dll.)
+│   ├── lib/                # Utilitas murni (env, cms-client, gsap, formatters, dicoding)
+│   ├── styles/             # Tailwind CSS v4 & custom design tokens (globals.css)
+│   └── types/              # Definisi tipe TypeScript (project, certificate, cms, content)
+└── studio/                 # Sanity Studio v3 untuk pengelolaan konten proyek
+```
+
+---
+
+## Menjalankan Proyek Secara Lokal
+
+### 1. Instalasi & Development Server
 
 ```bash
 npm install
 npm run dev
 ```
 
-Perintah verifikasi dan aset:
+Buka `http://localhost:5173` di browser.
+
+### 2. Daftar Perintah (`npm scripts`)
 
 | Perintah | Kegunaan |
 |---|---|
-| `npm run dev` | Menjalankan dev server Vite |
-| `npm run build` | Build produksi ke `dist/` |
-| `npm run preview` | Preview hasil build produksi |
-| `npm run typecheck` | Pemeriksaan TypeScript strict (`tsc --noEmit`) |
-| `npm run lint` | Pemeriksaan ESLint (`--max-warnings 0`) |
-| `npm run test` | Menjalankan unit test Vitest |
-| `npm run check` | Menjalankan `typecheck && lint && test && build` |
-| `npm run assets` | Menjalankan pipeline Python optimasi foto, sertifikat, dan OG image |
+| `npm run dev` | Menjalankan development server Vite |
+| `npm run build` | Build produksi ke folder `dist/` |
+| `npm run preview` | Menjalankan preview hasil build produksi |
+| `npm run typecheck` | Pemeriksaan tipe TypeScript (`tsc --noEmit`) |
+| `npm run lint` | Pemeriksaan kode dengan ESLint (`--max-warnings 0`) |
+| `npm run test` | Menjalankan unit test dengan Vitest |
+| `npm run check` | Menjalankan `typecheck && lint && test && build` sekaligus |
+| `npm run assets` | Menjalankan script Python untuk optimasi ulang foto, sertifikat, dan OG image |
+| `npm run studio:install` | Menginstal dependensi Sanity Studio di folder `studio/` |
+| `npm run studio` | Menjalankan Sanity Studio lokal di `http://localhost:3333` |
 
-## Konfigurasi & Menjalankan Sanity Headless CMS
+---
 
-Folder admin **Sanity Studio** sudah disiapkan di `studio/` lengkap dengan schema `project` yang cocok dengan website portofolio ini.
+## Konfigurasi Sanity CMS & Deployment (Vercel)
 
-1. Isi `VITE_CMS_PROJECT_ID` pada file `.env` di root proyek:
+1. Salin `.env.example` menjadi `.env` lalu isi konfigurasi Sanity:
 
 ```env
 VITE_CMS_PROJECT_ID=your_project_id
 VITE_CMS_DATASET=production
 VITE_CMS_API_VERSION=2025-02-19
-# Kosongkan jika dataset public; jika private, gunakan token read-only saja.
 VITE_CMS_TOKEN=
 ```
 
-2. Di dashboard [sanity.io](https://www.sanity.io/manage) → **API → CORS Origins**, tambahkan `http://localhost:5173` dan `http://localhost:3333` (centang *Allow credentials* hanya untuk port Studio `3333`).
-3. Instal dependensi Studio (cukup sekali) lalu jalankan Studio:
+2. Saat men-deploy ke **Vercel**, tambahkan domain Vercel Anda (misalnya `https://portofolio-sandisetianto-3yb5.vercel.app`) pada dashboard [Sanity Manage](https://www.sanity.io/manage) → **API** → **CORS Origins** (tanpa mencentang *Allow credentials*).
+3. Jika `VITE_CMS_PROJECT_ID` tidak diisi atau koneksi CMS terputus, situs tetap berjalan normal menggunakan data proyek dari `src/features/projects/projects.fallback.ts`.
 
-```bash
-npm run studio:install
-npm run studio
-```
+---
 
-Jika `VITE_CMS_PROJECT_ID` kosong atau request gagal, aplikasi otomatis menggunakan data fallback dari `src/features/projects/projects.fallback.ts`.
+## Kontak
 
-### Skema Dokumen Sanity (`project`)
-
-Buat dokumen bertipe `project` di Sanity Studio dengan field berikut (sesuai `PROJECTS_QUERY` di `src/features/projects/projects.service.ts`):
-
-- `title` (`string`, required)
-- `slug` (`slug`, required)
-- `category` (`string`, required)
-- `year` (`number`, required)
-- `summary` (`text`, required)
-- `coverImage` (`image`, optional — tambahkan field `alt: string`)
-- `tags` (`array` of `string`)
-- `liveUrl` (`url`, optional)
-- `repoUrl` (`url`, optional)
-- `featured` (`boolean`)
-- `order` (`number`)
-
-## Menambah Sertifikat Baru
-
-1. Letakkan file sertifikat (PDF/PNG/JPEG) ke `asset/SERTIFIKAT/`.
-2. Tambahkan pemetaan slug ke `CERTIFICATE_SOURCES` di `scripts/build-certificates.py`.
-3. Jalankan `npm run assets` (membutuhkan Python + PyMuPDF + Pillow). Script bersifat idempoten dan akan menghasilkan WebP 480px (`-thumb.webp`), 1600px (`-full.webp`), serta memperbarui `src/assets/certificates/manifest.json`.
-4. Tambahkan entri baru di `src/content/certificates.ts` (untuk sertifikat Dicoding gunakan helper `createDicodingCertificate`).
-
-## Mengisi Data Pribadi (`[ISI]`)
-
-Seluruh placeholder data pribadi dikumpulkan di:
-- `src/content/profile.ts` — email, tautan LinkedIn/GitHub/Instagram, CV PDF, dan tahun belajar.
-- `src/content/certificates.ts` — tahun lomba fotografi (`juara-2-fotografi.issuedAt`).
-- `src/features/projects/projects.fallback.ts` — proyek contoh jika belum menghubungkan Sanity CMS.
+- **Nama:** Sandi Setianto
+- **Email:** [sunside2587@gmail.com](mailto:sunside2587@gmail.com)
+- **LinkedIn:** [linkedin.com/in/sandi-setianto-124686364](https://www.linkedin.com/in/sandi-setianto-124686364)
+- **GitHub:** [@sunside2587](https://github.com/sunside2587) · [@sunside2587-creator](https://github.com/sunside2587-creator)
+- **Instagram:** [@sandi.setianto](https://www.instagram.com/sandi.setianto)
