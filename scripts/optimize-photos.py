@@ -66,6 +66,19 @@ def main() -> None:
         anime_crop = anime_src.crop((0, min(100, ah - 1), aw, ah))
         anime_crop.save(OUT_DIR / "hero-anime.webp", format="WEBP", quality=85, method=6)
 
+    # INTEGRATIF.png — mobile app showcase screenshot (preserve alpha)
+    integratif_path = ASSET_DIR / "INTEGRATIF.png"
+    if integratif_path.exists():
+        integratif_src = ImageOps.exif_transpose(Image.open(integratif_path)).convert("RGBA")
+        integratif_src.save(OUT_DIR / "project-integratif.webp", format="WEBP", quality=85, method=6)
+
+    # batikazrya.png — Azrya Batik AI web application screenshot (1917x1037 -> 1280x692 RGB)
+    batik_path = ASSET_DIR / "batikazrya.png"
+    if batik_path.exists():
+        batik_src = ImageOps.exif_transpose(Image.open(batik_path)).convert("RGB")
+        batik_resized = batik_src.resize((1280, 692), Image.Resampling.LANCZOS)
+        batik_resized.save(OUT_DIR / "project-azrya-batik.webp", format="WEBP", quality=82, method=6)
+
     print("Optimized photos written to", OUT_DIR)
 
 

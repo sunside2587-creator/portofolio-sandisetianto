@@ -114,6 +114,12 @@ describe('projects mapper & service ACL', () => {
     const res = await loadProjects(MOCK_CONFIG, controller.signal);
     expect(res.isFallback).toBe(false);
     expect(res.error).toBeUndefined();
-    expect(res.projects.map((p) => p.id)).toEqual(['p1', 'p2']);
+    expect(res.projects.map((p) => p.id)).toEqual([
+      'p1',
+      'murojaah-juz-30-tif',
+      'p2',
+      'azrya-batik-ai',
+      'sandi-portfolio',
+    ]);
   });
 });

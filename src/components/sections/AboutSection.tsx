@@ -23,7 +23,7 @@ export function AboutSection() {
   ] as const;
 
   return (
-    <section id="about" aria-labelledby="about-title" className="border-b border-line py-16 lg:py-24">
+    <section id="about" aria-labelledby="about-title" className="border-b border-line py-10 lg:py-14">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="flex flex-col justify-between lg:col-span-5 lg:border-r lg:border-line lg:pr-8">

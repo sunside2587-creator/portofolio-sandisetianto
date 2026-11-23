@@ -2,8 +2,17 @@ import { fetchSanityQuery } from '@/lib/cms-client';
 import type { CmsConfig } from '@/types/cms';
 import type { AppError } from '@/types/common';
 import type { Project } from '@/types/project';
-import { FALLBACK_PROJECTS } from './projects.fallback';
+import { FALLBACK_PROJECTS, PINNED_PROJECTS } from './projects.fallback';
 import { isCmsProjectDto, isCmsResponse, mapDtoToProject } from './projects.mapper';
+
+function mergeWithPinnedProjects(cmsProjects: readonly Project[]): readonly Project[] {
+  const cmsIds = new Set(cmsProjects.map((p) => p.id));
+  const cmsSlugs = new Set(cmsProjects.map((p) => p.slug));
+  const missingPinned = PINNED_PROJECTS.filter(
+    (p) => !cmsIds.has(p.id) && !cmsSlugs.has(p.slug),
+  );
+  return [...cmsProjects, ...missingPinned].toSorted((a, b) => a.order - b.order);
+}
 
 export const PROJECTS_QUERY = `*[_type == "project"] | order(order asc, year desc) {
   "id": _id,
@@ -67,19 +76,23 @@ export async function loadProjects(
       .map(mapDtoToProject)
       .toSorted((a, b) => a.order - b.order);
 
-    if (raw.result.length > 0 && mapped.length === 0) {
+    if (mapped.length === 0) {
       return {
         projects: FALLBACK_PROJECTS,
         isFallback: true,
-        error: {
-          code: 'VALIDATION_ERROR',
-          message: 'No valid projects found in CMS payload.',
-        },
+        ...(raw.result.length > 0
+          ? {
+              error: {
+                code: 'VALIDATION_ERROR',
+                message: 'No valid projects found in CMS payload.',
+              },
+            }
+          : {}),
       };
     }
 
     return {
-      projects: mapped,
+      projects: mergeWithPinnedProjects(mapped),
       isFallback: false,
     };
   } catch (err: unknown) {

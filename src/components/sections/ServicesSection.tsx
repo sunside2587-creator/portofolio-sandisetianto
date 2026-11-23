@@ -9,7 +9,7 @@ export function ServicesSection() {
     <section
       id="services"
       aria-labelledby="services-title"
-      className="border-b border-line py-16 lg:py-24"
+      className="border-b border-line py-10 lg:py-14"
     >
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">

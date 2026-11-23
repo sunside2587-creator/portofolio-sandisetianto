@@ -1,12 +1,12 @@
 # PROGRESS
 
 ## Status Terakhir
-**Fase 1–5 selesai + Sanity Studio (`studio/`) Siap Pakai.** Folder `studio/` lengkap dengan schema `project` (`studio/schemaTypes/project.ts`), file `.env` root, dan script sinkronisasi `npm run studio` (`scripts/run-studio.mjs`) telah dibuat. Tinggal memasukkan `VITE_CMS_PROJECT_ID` ke `.env`.
+**Fase 1–5 selesai + Penambahan Proyek Azrya Batik & Muroja'ah Juz 30.** Menambahkan proyek **Azrya Batik — AI POS, HPP & Analytics** (React/Vite, Node/Express, PostgreSQL, FastAPI, Vision AI/OCR, Gemini + LangChain, ChromaDB, Scikit-learn/Prophet, Streamlit, serta cover `project-azrya-batik.webp` dari `asset/batikazrya.png`) dan **Muroja'ah Juz 30 — TIF UIN Suska Riau** (Flutter, Play Store link, `project-integratif.webp`) ke `PINNED_PROJECTS` / `FALLBACK_PROJECTS` sehingga seluruh slot utama Selected Work terisi proyek nyata.
 
 Catatan QA Browser: server preview sempat dijalankan di `http://localhost:4173/`, namun browser subagent tidak dapat terhubung ke Chrome DevTools karena remote debugging Chrome (`DevToolsActivePort`) belum diaktifkan di mesin pengguna. Pengujian visual, responsif, dan Lighthouse mobile perlu dijalankan manual saat membuka situs di browser.
 
 ## Langkah Berikutnya
-1. Isi sisa placeholder `[ISI]` bila sudah tersedia (`contact.cvUrl`, `juara-2-fotografi.issuedAt`, `yearsCodingPlaceholder`, `VITE_CMS_PROJECT_ID`, dan proyek nyata di Sanity CMS).
+1. Isi sisa placeholder `[ISI]` bila sudah tersedia (`contact.cvUrl`, `juara-2-fotografi.issuedAt`, `yearsCodingPlaceholder`).
 2. Jalankan `npm run dev` untuk melihat situs secara langsung dan lakukan audit Lighthouse mobile di Chrome DevTools.
 
 ## Checklist
@@ -53,5 +53,5 @@ Catatan QA Browser: server preview sempat dijalankan di `http://localhost:4173/`
 - [ ] File CV PDF (`src/content/profile.ts` → `contact.cvUrl`)
 - [ ] Tahun lomba fotografi se-PTKI (`src/content/certificates.ts` → `juara-2-fotografi.issuedAt`)
 - [ ] Tahun belajar/pengalaman untuk statistik About (`src/content/profile.ts`)
-- [ ] Sanity Project ID di `.env` (`VITE_CMS_PROJECT_ID`)
-- [ ] Data proyek nyata di Sanity CMS atau `src/features/projects/projects.fallback.ts`
+- [x] Sanity Project ID di `.env` (`VITE_CMS_PROJECT_ID`)
+- [x] Data proyek nyata di Sanity CMS atau `src/features/projects/projects.fallback.ts`

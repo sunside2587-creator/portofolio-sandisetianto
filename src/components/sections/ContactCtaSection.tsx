@@ -13,7 +13,7 @@ export function ContactCtaSection() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="relative overflow-hidden bg-ink py-16 text-paper lg:py-24"
+      className="relative overflow-hidden bg-ink py-10 text-paper lg:py-14"
     >
       <Container className="relative z-10">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
