@@ -78,7 +78,7 @@ export function AboutSection() {
           </div>
 
           <div className="lg:col-span-3 lg:flex lg:items-center">
-            <div data-reveal className="mx-auto w-full max-w-xs overflow-hidden border border-line bg-ink">
+            <div data-reveal className="mx-auto w-full max-w-[270px] overflow-hidden border border-line bg-ink sm:max-w-xs">
               <img
                 src={ABOUT_PORTRAIT.src}
                 srcSet={ABOUT_PORTRAIT.srcSet}
@@ -92,11 +92,11 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pl-8">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8">
+          <div className="flex flex-col justify-between gap-6 sm:gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pl-8">
+            <div className="grid grid-cols-2 gap-x-5 gap-y-5 sm:gap-x-6 sm:gap-y-8">
               {stats.map((stat) => (
-                <div key={stat.label} data-reveal className="border-t border-line pt-4">
-                  <p className="font-display text-5xl leading-none text-signal sm:text-6xl">
+                <div key={stat.label} data-reveal className="border-t border-line pt-3.5 sm:pt-4">
+                  <p className="font-display text-4xl leading-none text-signal sm:text-6xl">
                     <CountUp value={stat.value} suffix={stat.suffix} />
                   </p>
                   <p className="mt-2 text-[11px] font-semibold tracking-[0.18em] text-muted uppercase">
@@ -106,8 +106,11 @@ export function AboutSection() {
               ))}
             </div>
 
-            <div className="flex justify-end pt-2">
-              <RotatingBadge text="THOUGHTFUL CODE • MEANINGFUL IMPACT • ">
+            <div className="flex items-center justify-between border-t border-line pt-4 lg:justify-end lg:border-t-0 lg:pt-2">
+              <span className="font-mono text-[10px] tracking-[0.18em] text-muted uppercase lg:hidden">
+                VERIFIED TRACK RECORD
+              </span>
+              <RotatingBadge text="THOUGHTFUL CODE • MEANINGFUL IMPACT • " className="h-24 w-24 sm:h-28 sm:w-28">
                 <span className="font-display text-3xl leading-none text-signal">*</span>
               </RotatingBadge>
             </div>
