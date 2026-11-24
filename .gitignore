@@ -12,3 +12,5 @@ asset/SERTIFIKAT/Asah led by Dicoding/
 !README.md
 .agents/
 .agent/
+.claude/
+skills-lock.json
