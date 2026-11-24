@@ -68,6 +68,19 @@ body {
   overflow-x: clip;
 }
 
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-signal);
   outline-offset: 2px;

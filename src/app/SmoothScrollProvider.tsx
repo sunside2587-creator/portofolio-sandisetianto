@@ -5,6 +5,15 @@ import type { ReactNode } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { SmoothScrollContext, type SmoothScrollApi } from '@/lib/smooth-scroll-context';
 
+function getScrollOffset(target: string): number {
+  if (target === '#top') {
+    return 0;
+  }
+  const header = document.querySelector('header');
+  const headerHeight = header ? header.getBoundingClientRect().height : 60;
+  return -Math.round(headerHeight + 4);
+}
+
 export function SmoothScrollProvider({ children }: { readonly children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
   const reducedMotion = Boolean(useReducedMotion());
@@ -44,14 +53,21 @@ export function SmoothScrollProvider({ children }: { readonly children: ReactNod
         lenisRef.current?.start();
       },
       scrollTo: (target: string) => {
+        const offset = getScrollOffset(target);
         const instance = lenisRef.current;
         if (instance) {
-          instance.scrollTo(target, { offset: 0 });
+          instance.start();
+          instance.scrollTo(target, { offset, force: true });
+          return;
+        }
+        if (target === '#top') {
+          window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
           return;
         }
         const el = document.querySelector(target);
         if (el) {
-          el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+          const top = el.getBoundingClientRect().top + window.scrollY + offset;
+          window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' });
         }
       },
     }),

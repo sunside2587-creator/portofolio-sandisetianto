@@ -60,8 +60,10 @@ function PortfolioPage() {
 
 export function App() {
   return (
-    <AppProviders>
-      <PortfolioPage />
-    </AppProviders>
+    <ErrorBoundary fallback={<SectionFallback label="Portfolio" />}>
+      <AppProviders>
+        <PortfolioPage />
+      </AppProviders>
+    </ErrorBoundary>
   );
 }

@@ -51,19 +51,25 @@ export function CertificateDialog({
     <Dialog open={open} onClose={onClose} labelledBy="cert-dialog-title">
       {certificate ? (
         <>
-          <Dialog.Header className="flex items-start justify-between gap-4">
-            <div>
+          <Dialog.Header className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
               <span className="text-[11px] font-semibold tracking-[0.18em] text-signal uppercase">
                 {certificate.category}
               </span>
               <h3
                 id="cert-dialog-title"
-                className="mt-1 font-display text-2xl leading-tight uppercase sm:text-3xl"
+                className="mt-1 font-display text-xl leading-tight uppercase sm:text-3xl"
               >
                 {certificate.title}
               </h3>
             </div>
-            <Button variant="outline" tone="ink" onClick={onClose} aria-label="Close certificate dialog">
+            <Button
+              variant="outline"
+              tone="ink"
+              onClick={onClose}
+              aria-label="Close certificate dialog"
+              className="shrink-0 px-3 py-2 sm:px-4"
+            >
               CLOSE ×
             </Button>
           </Dialog.Header>
@@ -94,7 +100,7 @@ export function CertificateDialog({
             <CertificateMetaList certificate={certificate} />
           </Dialog.Body>
 
-          <Dialog.Footer className="flex items-center justify-between gap-4">
+          <Dialog.Footer className="flex items-center justify-between gap-2 sm:gap-4">
             <Button
               variant="outline"
               tone="ink"
@@ -104,8 +110,11 @@ export function CertificateDialog({
                   onSelect(prevCert.id);
                 }
               }}
+              className="px-3 py-2 sm:px-4"
             >
-              ← PREVIOUS
+              <span>←</span>
+              <span className="sm:hidden">PREV</span>
+              <span className="hidden sm:inline">PREVIOUS</span>
             </Button>
             <span className="text-xs font-medium tracking-[0.16em] text-muted uppercase">
               {`${activeIndex + 1} / ${items.length}`}
@@ -119,8 +128,10 @@ export function CertificateDialog({
                   onSelect(nextCert.id);
                 }
               }}
+              className="px-3 py-2 sm:px-4"
             >
-              NEXT →
+              <span>NEXT</span>
+              <span>→</span>
             </Button>
           </Dialog.Footer>
         </>

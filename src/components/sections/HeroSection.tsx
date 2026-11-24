@@ -1,9 +1,11 @@
+import { use } from 'react';
 import { Container } from '@/components/layout/Container';
 import { ArrowLink } from '@/components/ui/ArrowLink';
 import { CrosshairGrid } from '@/components/ui/CrosshairGrid';
 import { Monogram } from '@/components/ui/Monogram';
 import { HERO_ANIME_IMAGE } from '@/content/images';
 import { PROFILE } from '@/content/profile';
+import { SmoothScrollContext } from '@/lib/smooth-scroll-context';
 
 const HERO_FRAME_RADAR = (
   <svg
@@ -19,13 +21,14 @@ const HERO_FRAME_RADAR = (
 );
 
 export function HeroSection() {
+  const { scrollTo } = use(SmoothScrollContext);
   const [firstLine, ...restLines] = PROFILE.taglineLines;
 
   return (
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="bg-y2k-grid relative overflow-hidden border-b border-line pt-5 pb-7 sm:pt-8 lg:pt-10 lg:pb-10"
+      className="bg-y2k-grid relative overflow-hidden border-b border-line pt-4 pb-6 sm:pt-8 lg:pt-10 lg:pb-10"
     >
       <CrosshairGrid />
       <span
@@ -42,16 +45,16 @@ export function HeroSection() {
       </span>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-1 items-end gap-7 sm:gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <h1
               id="hero-title"
-              className="font-display text-[clamp(4.5rem,14.5vw,13.25rem)] leading-[0.83] tracking-[-0.02em] uppercase"
+              className="font-display text-[clamp(3.35rem,13.8vw,13.25rem)] leading-[0.86] tracking-[-0.02em] uppercase sm:leading-[0.83]"
             >
               <span className="sr-only">{`${PROFILE.name}, ${PROFILE.role} — `}</span>
 
               {firstLine ? (
-                <span className="flex flex-wrap items-center gap-4 sm:gap-7">
+                <span className="flex flex-wrap items-center gap-3 sm:gap-7">
                   <span className="block overflow-hidden">
                     <span data-hero-line className="block text-ink">
                       {firstLine.text}
@@ -80,15 +83,15 @@ export function HeroSection() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative mx-auto mt-4 w-full max-w-[400px] sm:max-w-[420px] lg:ml-auto lg:mr-4">
-              <div aria-hidden="true" className="absolute top-5 -right-3 -bottom-3 left-5 bg-signal" />
-              <div className="relative border border-ink bg-ink px-7 pt-5 pb-7 text-paper sm:px-9 sm:pt-6 sm:pb-8">
+            <div className="relative mx-auto mt-1 w-full max-w-[330px] pr-2.5 sm:mt-4 sm:max-w-[420px] sm:pr-0 lg:ml-auto lg:mr-4">
+              <div aria-hidden="true" className="absolute top-4 right-0 -bottom-2.5 left-4 bg-signal sm:top-5 sm:-right-3 sm:-bottom-3 sm:left-5" />
+              <div className="relative border border-ink bg-ink px-5 pt-4 pb-5 text-paper sm:px-9 sm:pt-6 sm:pb-8">
                 {HERO_FRAME_RADAR}
                 <div className="relative z-10 flex items-center justify-between font-mono text-[9px] tracking-[0.2em] text-paper/65 uppercase">
                   <span>Tech Wizard</span>
                   <span>+</span>
                 </div>
-                <div className="relative z-20 mt-4 mb-2 flex items-center justify-center">
+                <div className="relative z-20 mt-3 mb-1 flex items-center justify-center sm:mt-4 sm:mb-2">
                   <img
                     src={HERO_ANIME_IMAGE.src}
                     width={HERO_ANIME_IMAGE.width}
@@ -96,7 +99,7 @@ export function HeroSection() {
                     alt={HERO_ANIME_IMAGE.alt}
                     fetchPriority="high"
                     loading="eager"
-                    className="h-[360px] w-auto object-contain drop-shadow-[0_14px_22px_rgba(0,0,0,0.55)] sm:h-[395px]"
+                    className="h-[275px] w-auto object-contain drop-shadow-[0_14px_22px_rgba(0,0,0,0.55)] sm:h-[380px] lg:h-[395px]"
                   />
                 </div>
               </div>
@@ -104,8 +107,17 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
-          <ArrowLink label="SCROLL TO EXPLORE" href="#about" tone="ink" />
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-4 sm:mt-8 sm:pt-5">
+          <ArrowLink
+            label="SCROLL TO EXPLORE"
+            href="#about"
+            tone="ink"
+            onClick={(event) => {
+              event.preventDefault();
+              scrollTo('#about');
+              window.history.replaceState(null, '', '#about');
+            }}
+          />
           <span className="text-[11px] font-medium tracking-[0.18em] text-muted uppercase">
             {PROFILE.name}
           </span>

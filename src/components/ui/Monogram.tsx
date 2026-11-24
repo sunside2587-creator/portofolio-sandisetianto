@@ -11,7 +11,8 @@ export function Monogram({
   tone = 'ink',
   className = '',
 }: MonogramProps) {
-  const sizeClass = size === 'lg' ? 'h-16 w-16 text-2xl' : 'h-10 w-10 text-xs';
+  const sizeClass =
+    size === 'lg' ? 'h-11 w-11 text-base sm:h-16 sm:w-16 sm:text-2xl' : 'h-10 w-10 text-xs';
   const toneClass =
     tone === 'paper'
       ? 'border-paper text-paper'

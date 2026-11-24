@@ -52,21 +52,21 @@ export function ProjectCard({ project, index, variant }: ProjectCardProps) {
       <motion.article
         whileHover={{ y: -4 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
-        className={`flex h-full flex-col justify-between p-6 transition-colors ${styles.container}`}
+        className={`flex h-full flex-col justify-between p-5 transition-colors sm:p-6 ${styles.container}`}
       >
         <div>
           <div className="flex items-start justify-between gap-4">
-            <span className="font-display text-3xl leading-none tracking-tight">{num}</span>
-            <span className={`text-[11px] font-semibold tracking-[0.18em] uppercase ${styles.mutedText}`}>
+            <span className="font-display text-2xl leading-none tracking-tight sm:text-3xl">{num}</span>
+            <span className={`text-[10px] font-semibold tracking-[0.16em] uppercase sm:text-[11px] sm:tracking-[0.18em] ${styles.mutedText}`}>
               {`${project.category} · ${project.year}`}
             </span>
           </div>
 
-          <h3 className="mt-4 font-display text-3xl leading-[0.95] tracking-tight uppercase">
+          <h3 className="mt-3.5 font-display text-2xl leading-[0.96] tracking-tight uppercase sm:mt-4 sm:text-3xl">
             {project.title}
           </h3>
 
-          <div className="mt-5 aspect-[16/10] w-full overflow-hidden border border-current/15">
+          <div className="mt-4 aspect-[16/10] w-full overflow-hidden border border-current/15 sm:mt-5">
             {project.coverImage ? (
               <img
                 src={project.coverImage.url}
@@ -75,7 +75,7 @@ export function ProjectCard({ project, index, variant }: ProjectCardProps) {
                 width={project.coverImage.width}
                 height={project.coverImage.height}
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-top"
               />
             ) : (
               <div className="flex h-full w-full flex-col justify-between p-4 opacity-90">

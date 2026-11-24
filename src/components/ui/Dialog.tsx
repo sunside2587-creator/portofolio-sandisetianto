@@ -39,7 +39,7 @@ function DialogRoot({
     if (dialog.open) {
       dialog.close();
     }
-    previousFocusRef.current?.focus();
+    previousFocusRef.current?.focus({ preventScroll: true });
     previousFocusRef.current = null;
   }, [open]);
 
@@ -77,15 +77,15 @@ function DialogRoot({
 }
 
 function DialogHeader({ children, className = '' }: { readonly children: ReactNode; readonly className?: string }) {
-  return <div className={`border-b border-line px-6 py-4 ${className}`}>{children}</div>;
+  return <div className={`border-b border-line px-4 py-3.5 sm:px-6 sm:py-4 ${className}`}>{children}</div>;
 }
 
 function DialogBody({ children, className = '' }: { readonly children: ReactNode; readonly className?: string }) {
-  return <div className={`p-6 ${className}`}>{children}</div>;
+  return <div className={`p-4 sm:p-6 ${className}`}>{children}</div>;
 }
 
 function DialogFooter({ children, className = '' }: { readonly children: ReactNode; readonly className?: string }) {
-  return <div className={`border-t border-line px-6 py-4 ${className}`}>{children}</div>;
+  return <div className={`border-t border-line px-4 py-3.5 sm:px-6 sm:py-4 ${className}`}>{children}</div>;
 }
 
 export const Dialog = Object.assign(DialogRoot, {

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { WarpedWordmark } from '@/components/ui/WarpedWordmark';
 import { GALLERY_ITEMS } from '@/content/gallery';
@@ -6,7 +6,10 @@ import { PROFILE } from '@/content/profile';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { GalleryCarousel } from './GalleryCarousel';
 import { GalleryDial } from './GalleryDial';
-import { GalleryFan } from './GalleryFan';
+
+const LazyGalleryFan = lazy(() =>
+  import('./GalleryFan').then((mod) => ({ default: mod.GalleryFan })),
+);
 
 const CYBER_EYE_EMBLEM = (
   <svg viewBox="0 0 44 44" className="h-9 w-9 text-ink motion-safe:animate-spin-slow" aria-hidden="true">
@@ -116,13 +119,19 @@ export function GallerySection() {
 
         <div className="mt-4">
           {isDesktop ? (
-            <GalleryFan
+            <Suspense fallback={<div className="h-[400px]" />}>
+              <LazyGalleryFan
+                items={GALLERY_ITEMS}
+                activeIndex={activeIndex}
+                onSelectIndex={setActiveIndex}
+              />
+            </Suspense>
+          ) : (
+            <GalleryCarousel
               items={GALLERY_ITEMS}
               activeIndex={activeIndex}
               onSelectIndex={setActiveIndex}
             />
-          ) : (
-            <GalleryCarousel items={GALLERY_ITEMS} />
           )}
         </div>
 

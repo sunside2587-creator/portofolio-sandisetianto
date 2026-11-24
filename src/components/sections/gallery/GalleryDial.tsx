@@ -20,10 +20,10 @@ export function GalleryDial({
   const formattedTotal = String(total).padStart(2, '0');
 
   return (
-    <div className="relative mx-auto -mt-8 flex max-w-xl flex-col items-center">
+    <div className="relative mx-auto mt-1 flex max-w-xl flex-col items-center md:-mt-8">
       <div
         aria-hidden="true"
-        className="pointer-events-none relative h-44 w-full max-w-[460px] overflow-hidden select-none"
+        className="pointer-events-none relative h-32 w-full max-w-[380px] overflow-hidden select-none sm:h-44 sm:max-w-[460px]"
       >
         <svg viewBox="0 0 400 220" className="h-full w-full overflow-visible">
           <defs>
@@ -66,8 +66,8 @@ export function GalleryDial({
           </text>
         </svg>
 
-        <div className="absolute inset-x-0 bottom-3 flex flex-col items-center gap-1">
-          <span className="font-mono text-xs font-bold tracking-[0.22em] text-signal uppercase">
+        <div className="absolute inset-x-0 bottom-2 flex flex-col items-center gap-1 sm:bottom-3">
+          <span className="font-mono text-[11px] font-bold tracking-[0.22em] text-signal uppercase sm:text-xs">
             ▲ TECH STACK
           </span>
           <span className="font-mono text-[10px] tracking-[0.18em] text-muted uppercase">
@@ -76,12 +76,12 @@ export function GalleryDial({
         </div>
       </div>
 
-      <div className="relative z-10 mt-2 flex items-center gap-4">
+      <div className="relative z-10 mt-2 grid w-full max-w-[280px] grid-cols-2 gap-3 sm:flex sm:w-auto sm:max-w-none sm:items-center sm:gap-4">
         <button
           type="button"
           onClick={onPrev}
           aria-label="Previous gallery card"
-          className="inline-flex min-h-11 cursor-pointer items-center gap-2 border border-line bg-paper px-4 py-2 font-mono text-[11px] font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:border-signal hover:text-signal"
+          className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 border border-line bg-paper px-4 py-2 font-mono text-[11px] font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:border-signal hover:text-signal active:bg-ink active:text-paper"
         >
           <span aria-hidden="true">◀</span>
           <span>PREV</span>
@@ -90,7 +90,7 @@ export function GalleryDial({
           type="button"
           onClick={onNext}
           aria-label="Next gallery card"
-          className="inline-flex min-h-11 cursor-pointer items-center gap-2 border border-line bg-paper px-4 py-2 font-mono text-[11px] font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:border-signal hover:text-signal"
+          className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 border border-line bg-paper px-4 py-2 font-mono text-[11px] font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:border-signal hover:text-signal active:bg-ink active:text-paper"
         >
           <span>NEXT</span>
           <span aria-hidden="true">▶</span>

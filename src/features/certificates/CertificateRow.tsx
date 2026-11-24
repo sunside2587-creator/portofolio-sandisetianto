@@ -26,29 +26,41 @@ export function CertificateRow({
     <div
       onPointerEnter={() => onHoverStart(certificate)}
       onPointerLeave={onHoverEnd}
-      className="group grid grid-cols-12 items-center gap-3 border-b border-line py-4 transition-colors hover:bg-ink/[0.03]"
+      className="group flex flex-col gap-3 border-b border-line py-4 transition-colors hover:bg-ink/[0.03] sm:grid sm:grid-cols-12 sm:items-center"
     >
-      <div className="col-span-2 sm:col-span-1">
+      <div className="hidden sm:col-span-1 sm:block">
         <span className="font-mono text-xs font-medium text-muted">{num}</span>
       </div>
 
-      <div className="col-span-10 flex items-center gap-3 sm:col-span-6">
+      <div className="flex items-start gap-3 sm:col-span-6 sm:items-center">
         {showInlineThumb && certificate.image ? (
-          <img
-            src={certificate.image.thumb}
-            alt={certificate.image.alt}
-            width={48}
-            height={36}
-            loading="lazy"
-            className="h-9 w-12 shrink-0 rounded object-cover border border-line"
-          />
-        ) : null}
-
-        <div className="min-w-0">
           <button
             type="button"
             onClick={() => onOpen(certificate.id)}
-            className="min-h-11 w-full cursor-pointer text-left font-display text-xl leading-tight tracking-tight text-ink uppercase transition-colors group-hover:text-signal sm:text-2xl"
+            aria-label={`Preview ${certificate.title}`}
+            className="mt-0.5 shrink-0 cursor-pointer overflow-hidden border border-line sm:mt-0"
+          >
+            <img
+              src={certificate.image.thumb}
+              alt={certificate.image.alt}
+              width={56}
+              height={40}
+              loading="lazy"
+              className="h-10 w-14 object-cover"
+            />
+          </button>
+        ) : null}
+
+        <div className="min-w-0 flex-1">
+          <div className="mb-1 flex items-center gap-2 font-mono text-[10px] tracking-[0.14em] text-muted uppercase sm:hidden">
+            <span className="font-bold text-signal">{num}</span>
+            <span>·</span>
+            <span>{dateLabel}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => onOpen(certificate.id)}
+            className="w-full cursor-pointer text-left font-display text-lg leading-snug tracking-tight text-ink uppercase transition-colors group-hover:text-signal sm:min-h-11 sm:text-2xl sm:leading-tight"
           >
             {certificate.title}
           </button>
@@ -56,20 +68,29 @@ export function CertificateRow({
         </div>
       </div>
 
-      <div className="col-span-6 pl-0 sm:col-span-2 sm:pl-0">
+      <div className="hidden sm:col-span-2 sm:block">
         <span className="text-xs font-medium tracking-[0.14em] text-muted uppercase">
           {dateLabel}
         </span>
       </div>
 
-      <div className="col-span-6 flex items-center justify-end gap-4 sm:col-span-3">
+      <div className="flex items-center justify-end gap-4 sm:col-span-3">
         {certificate.verifyUrl ? (
-          <ArrowLink label="VERIFY" href={certificate.verifyUrl} tone="ink" />
+          <>
+            <button
+              type="button"
+              onClick={() => onOpen(certificate.id)}
+              className="inline-flex min-h-9 cursor-pointer items-center text-[11px] font-semibold tracking-[0.14em] text-muted uppercase transition-colors hover:text-signal sm:hidden"
+            >
+              PREVIEW
+            </button>
+            <ArrowLink label="VERIFY" href={certificate.verifyUrl} tone="ink" />
+          </>
         ) : (
           <button
             type="button"
             onClick={() => onOpen(certificate.id)}
-            className="inline-flex min-h-11 cursor-pointer items-center gap-2 border-b border-ink/25 pb-1 text-xs font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:text-signal"
+            className="inline-flex min-h-10 cursor-pointer items-center gap-2 border-b border-ink/25 pb-1 text-xs font-semibold tracking-[0.16em] text-ink uppercase transition-colors hover:text-signal sm:min-h-11"
           >
             <span>VIEW</span>
             <span aria-hidden="true">⟶</span>
