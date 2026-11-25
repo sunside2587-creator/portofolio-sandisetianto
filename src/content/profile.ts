@@ -48,7 +48,7 @@ export const PROFILE: ProfileData = {
   bioShort:
     'I am an Informatics Engineering student at UIN Sultan Syarif Kasim Riau in Pekanbaru, focusing on modern fullstack web development with React, TypeScript, and JavaScript.',
   bioLong:
-    'My foundation spans front-end interfaces with React, back-end fundamentals with Node.js and REST APIs, and hardware-connected prototyping through Samsung Innovation Campus (Python & IoT) as well as hackathon collaboration at Cloud Camp Pekanbaru.',
+    'My foundation spans front-end interfaces with React, back-end with Node.js and REST APIs, and hardware-connected prototyping through Samsung Innovation Campus (Python & IoT) as well as hackathon collaboration at Cloud Camp Pekanbaru.',
   yearsCodingPlaceholder: null, // [ISI] Tahun belajar/pengalaman
   contact: {
     email: 'sunside2587@gmail.com',
